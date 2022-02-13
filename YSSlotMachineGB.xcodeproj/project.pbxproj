@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		CA9ED70627B89E7800FFE83E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9ED70527B89E7800FFE83E /* AppDelegate.swift */; };
 		CA9ED70827B89E7800FFE83E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9ED70727B89E7800FFE83E /* SceneDelegate.swift */; };
-		CA9ED70A27B89E7800FFE83E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9ED70927B89E7800FFE83E /* ViewController.swift */; };
 		CA9ED70D27B89E7800FFE83E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9ED70B27B89E7800FFE83E /* Main.storyboard */; };
 		CA9ED70F27B89E7900FFE83E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9ED70E27B89E7900FFE83E /* Assets.xcassets */; };
 		CA9ED71227B89E7900FFE83E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9ED71027B89E7900FFE83E /* LaunchScreen.storyboard */; };
+		CA9ED71C27B8A43F00FFE83E /* SlotMachineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9ED71B27B8A43F00FFE83E /* SlotMachineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA9ED70227B89E7800FFE83E /* YSSlotMachineGB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSSlotMachineGB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9ED70527B89E7800FFE83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA9ED70727B89E7800FFE83E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CA9ED70927B89E7800FFE83E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CA9ED70C27B89E7800FFE83E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA9ED70E27B89E7900FFE83E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA9ED71127B89E7900FFE83E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA9ED71327B89E7900FFE83E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA9ED71B27B8A43F00FFE83E /* SlotMachineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotMachineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 			children = (
 				CA9ED70527B89E7800FFE83E /* AppDelegate.swift */,
 				CA9ED70727B89E7800FFE83E /* SceneDelegate.swift */,
-				CA9ED70927B89E7800FFE83E /* ViewController.swift */,
+				CA9ED71B27B8A43F00FFE83E /* SlotMachineViewController.swift */,
 				CA9ED71927B8A0A600FFE83E /* Storyboards */,
 				CA9ED71A27B8A16300FFE83E /* Resources */,
 			);
@@ -154,9 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA9ED70A27B89E7800FFE83E /* ViewController.swift in Sources */,
 				CA9ED70627B89E7800FFE83E /* AppDelegate.swift in Sources */,
 				CA9ED70827B89E7800FFE83E /* SceneDelegate.swift in Sources */,
+				CA9ED71C27B8A43F00FFE83E /* SlotMachineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
