@@ -17,19 +17,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUI-mS-eLd">
-                                <rect key="frame" x="25" y="439" width="364" height="34"/>
+                                <rect key="frame" x="25" y="510" width="364" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Крутить!"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Крути эту штуку..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvw-GG-GJR">
-                                <rect key="frame" x="25" y="119" width="364" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <rect key="frame" x="25" y="94" width="364" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="U2K-Yh-wPl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfZ-yf-hWg">
-                                <rect key="frame" x="25" y="173" width="364" height="216"/>
+                            <pickerView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfZ-yf-hWg">
+                                <rect key="frame" x="25" y="244" width="364" height="216"/>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -40,7 +43,7 @@
                             <constraint firstItem="XfZ-yf-hWg" firstAttribute="top" secondItem="Lvw-GG-GJR" secondAttribute="bottom" constant="25" id="KAZ-FB-XJG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tUI-mS-eLd" secondAttribute="trailing" constant="25" id="Q4W-AC-PH8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lvw-GG-GJR" secondAttribute="trailing" constant="25" id="RCn-N8-55E"/>
-                            <constraint firstItem="Lvw-GG-GJR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="URy-c0-Gbc"/>
+                            <constraint firstItem="Lvw-GG-GJR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="URy-c0-Gbc"/>
                             <constraint firstItem="tUI-mS-eLd" firstAttribute="top" secondItem="XfZ-yf-hWg" secondAttribute="bottom" constant="50" id="WJY-be-LfG"/>
                             <constraint firstItem="Lvw-GG-GJR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="ltZ-lb-6fT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XfZ-yf-hWg" secondAttribute="trailing" constant="25" id="wJR-zA-UGk"/>

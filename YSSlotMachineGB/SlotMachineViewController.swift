@@ -11,11 +11,13 @@ import CombineCocoa
 
 class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     private var subscriptions = Set<AnyCancellable>()
+    var isSpinning = false
+    var isPlaying = false
     
-    let loopingMargin: Int = 40
-    
+    let loopingMargin: Int = 4000
+
     // Data
-    let slotItems = ["🍉", "💎", "🍓", "🍋"]
+    let slotItems = ["🍒", "💎", "🍋"]
     
     lazy var pickerData = [self.slotItems, self.slotItems, self.slotItems]
     lazy var maxPickerRow = self.pickerData[0].count
@@ -36,6 +38,7 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         for i in 0...2 { spinByRandom(for: i) }
+        self.isPlaying = true
     }
     
     // Delegate methods
@@ -62,8 +65,34 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     private func setupSubscriptions() {
+        let timerPublisher = Timer.publish(every: 0.01, on: .main, in: .default).autoconnect().share()
+        timerPublisher.sink { _ in
+            guard self.isSpinning else { return }
+            for i in 0...2 { self.spinByRandom(for: i) }
+        }.store(in: &subscriptions)
+   
         spinButton.tapPublisher.sink { _ in
-            for i in 0...2 { self.spinByOne(for: i) }
+            self.isSpinning.toggle()
+            
+            if self.isPlaying {
+                let slotEmoji1 = self.pickerData[0][self.slotPickerView.selectedRow(inComponent: 0) % self.maxPickerRow]
+                let slotEmoji2 = self.pickerData[1][self.slotPickerView.selectedRow(inComponent: 1) % self.maxPickerRow]
+                let slotEmoji3 = self.pickerData[2][self.slotPickerView.selectedRow(inComponent: 2) % self.maxPickerRow]
+
+                if slotEmoji1 == slotEmoji2 && slotEmoji2 == slotEmoji3 {
+                    self.titleLabel.text = "Вау! Ты выиграл, чувак!"
+                } else {
+                    self.titleLabel.text = "Не повезло, попробуй еще раз!"
+                }
+                
+            } else {
+                self.titleLabel.text = self.isSpinning ? "Удачи!" : "Крути эту штуку..."
+            }
+            if self.isSpinning {
+                self.titleLabel.text = "Удачи!"
+            }
+            
+            self.spinButton.setTitle(self.isSpinning ? "Стоп!" : "Крутить!", for: .normal)
         }.store(in: &subscriptions)
     }
     
@@ -71,9 +100,9 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
         slotPickerView.delegate = self
         slotPickerView.dataSource = self
         
-        slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 0, animated: false)
-        slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 1, animated: false)
-        slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 2, animated: false)
+        slotPickerView.selectRow(loopingMargin / 2 * maxPickerRow, inComponent: 0, animated: false)
+        slotPickerView.selectRow(loopingMargin / 2 * maxPickerRow, inComponent: 1, animated: false)
+        slotPickerView.selectRow(loopingMargin / 2 * maxPickerRow, inComponent: 2, animated: false)
     }
     
     private func spinByOne(for row: Int) {
