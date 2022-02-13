@@ -13,6 +13,7 @@
 		CA9ED70F27B89E7900FFE83E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9ED70E27B89E7900FFE83E /* Assets.xcassets */; };
 		CA9ED71227B89E7900FFE83E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9ED71027B89E7900FFE83E /* LaunchScreen.storyboard */; };
 		CA9ED71C27B8A43F00FFE83E /* SlotMachineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9ED71B27B8A43F00FFE83E /* SlotMachineViewController.swift */; };
+		CA9ED71F27B8C3D100FFE83E /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CA9ED71E27B8C3D100FFE83E /* CombineCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA9ED71F27B8C3D100FFE83E /* CombineCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +101,9 @@
 			dependencies = (
 			);
 			name = YSSlotMachineGB;
+			packageProductDependencies = (
+				CA9ED71E27B8C3D100FFE83E /* CombineCocoa */,
+			);
 			productName = YSSlotMachineGB;
 			productReference = CA9ED70227B89E7800FFE83E /* YSSlotMachineGB.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +132,9 @@
 				Base,
 			);
 			mainGroup = CA9ED6F927B89E7800FFE83E;
+			packageReferences = (
+				CA9ED71D27B8C3D100FFE83E /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+			);
 			productRefGroup = CA9ED70327B89E7800FFE83E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -376,6 +384,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CA9ED71D27B8C3D100FFE83E /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CA9ED71E27B8C3D100FFE83E /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA9ED71D27B8C3D100FFE83E /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CA9ED6FA27B89E7800FFE83E /* Project object */;
 }

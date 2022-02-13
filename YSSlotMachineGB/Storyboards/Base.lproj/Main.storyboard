@@ -21,9 +21,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Крутить!"/>
-                                <connections>
-                                    <action selector="spitButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CpU-Pw-BVb"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Крути эту штуку..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvw-GG-GJR">
                                 <rect key="frame" x="25" y="119" width="364" height="29"/>
@@ -51,7 +48,7 @@
                     </view>
                     <connections>
                         <outlet property="slotPickerView" destination="XfZ-yf-hWg" id="K90-SO-Lkx"/>
-                        <outlet property="spitButton" destination="tUI-mS-eLd" id="Q0g-8q-ZhM"/>
+                        <outlet property="spinButton" destination="tUI-mS-eLd" id="Jrh-J1-qCi"/>
                         <outlet property="titleLabel" destination="Lvw-GG-GJR" id="vtl-3e-aSh"/>
                     </connections>
                 </viewController>

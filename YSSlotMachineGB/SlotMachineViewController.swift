@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    private var subscriptions = Set<AnyCancellable>()
+    
     let loopingMargin: Int = 40
     
     // Data
@@ -18,26 +22,20 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     // Outlets
     @IBOutlet weak var slotPickerView: UIPickerView!
-    @IBOutlet weak var spitButton: UIButton!
+    @IBOutlet weak var spinButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
+        setupSubscriptions()
         setupPickerView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         for i in 0...2 { spinByRandom(for: i) }
-    }
-    
-    // Actions
-    @IBAction func spitButtonTapped(_ sender: Any) {
-        for i in 0...2 { spinByOne(for: i) }
     }
     
     // Delegate methods
@@ -63,6 +61,12 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
         titleLabel.text = "Крути эту штуку..."
     }
     
+    private func setupSubscriptions() {
+        spinButton.tapPublisher.sink { _ in
+            for i in 0...2 { self.spinByOne(for: i) }
+        }.store(in: &subscriptions)
+    }
+    
     private func setupPickerView() {
         slotPickerView.delegate = self
         slotPickerView.dataSource = self
@@ -77,6 +81,6 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     private func spinByRandom(for row: Int) {
-        slotPickerView.selectRow(slotPickerView.selectedRow(inComponent: row) + Int.random(in: 1...maxPickerRow * 2), inComponent: row, animated: true)
+        slotPickerView.selectRow(slotPickerView.selectedRow(inComponent: row) + Int.random(in: 1...maxPickerRow), inComponent: row, animated: true)
     }
 }
