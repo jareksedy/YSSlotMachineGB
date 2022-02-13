@@ -11,7 +11,7 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let loopingMargin: Int = 40
     
     // Data
-    let pickerData = [["👻", "🦀", "🌞", "💔"], ["👻", "🦀", "🌞", "💔"], ["👻", "🦀", "🌞", "💔"]]
+    let pickerData = [["🦀", "🌞", "💔"], ["🦀", "🌞", "💔"], ["🦀", "🌞", "💔"]]
     lazy var maxPickerRow = self.pickerData[0].count
     
     // Outlets
@@ -20,20 +20,25 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupPickerView()
     }
     
+    // Delegate methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return maxPickerRow
+        return loopingMargin * maxPickerRow
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[component][row]
+        return pickerData[component][row % maxPickerRow]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let currentIndex = row % maxPickerRow
+        slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow + currentIndex, inComponent: component, animated: false)
     }
     
     // Private methods
@@ -41,8 +46,8 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
         slotPickerView.delegate = self
         slotPickerView.dataSource = self
         
-        slotPickerView.selectRow(Int.random(in: 0...maxPickerRow), inComponent: 0, animated: false)
-        slotPickerView.selectRow(Int.random(in: 0...maxPickerRow), inComponent: 1, animated: false)
-        slotPickerView.selectRow(Int.random(in: 0...maxPickerRow), inComponent: 2, animated: false)
+        slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 0, animated: false)
+        slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 1, animated: false)
+        slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 2, animated: false)
     }
 }
