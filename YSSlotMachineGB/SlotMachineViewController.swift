@@ -11,7 +11,7 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let loopingMargin: Int = 40
     
     // Data
-    let slotItems = ["🍇", "🍉", "🍊", "💎"]
+    let slotItems = ["🍉", "💎", "🍓", "🍋"]
     
     lazy var pickerData = [self.slotItems, self.slotItems, self.slotItems]
     lazy var maxPickerRow = self.pickerData[0].count
@@ -19,17 +19,25 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     // Outlets
     @IBOutlet weak var slotPickerView: UIPickerView!
     @IBOutlet weak var spitButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
         setupPickerView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        for i in 0...2 { spinByRandom(for: i) }
     }
     
     // Actions
     @IBAction func spitButtonTapped(_ sender: Any) {
-        let currentIndex = slotPickerView.selectedRow(inComponent: 1)
-        slotPickerView.selectRow(currentIndex + 1, inComponent: 1, animated: true)
+        for i in 0...2 { spinByOne(for: i) }
     }
     
     // Delegate methods
@@ -51,6 +59,10 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     // Private methods
+    private func setupUI() {
+        titleLabel.text = "Крути эту штуку..."
+    }
+    
     private func setupPickerView() {
         slotPickerView.delegate = self
         slotPickerView.dataSource = self
@@ -58,5 +70,13 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
         slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 0, animated: false)
         slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 1, animated: false)
         slotPickerView.selectRow((loopingMargin / 2) * maxPickerRow, inComponent: 2, animated: false)
+    }
+    
+    private func spinByOne(for row: Int) {
+        slotPickerView.selectRow(slotPickerView.selectedRow(inComponent: row) + 1, inComponent: row, animated: true)
+    }
+    
+    private func spinByRandom(for row: Int) {
+        slotPickerView.selectRow(slotPickerView.selectedRow(inComponent: row) + Int.random(in: 1...maxPickerRow * 2), inComponent: row, animated: true)
     }
 }
