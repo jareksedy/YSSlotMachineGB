@@ -11,16 +11,25 @@ class SlotMachineViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let loopingMargin: Int = 40
     
     // Data
-    let pickerData = [["🦀", "🌞", "💔"], ["🦀", "🌞", "💔"], ["🦀", "🌞", "💔"]]
+    let slotItems = ["🍇", "🍉", "🍊", "💎"]
+    
+    lazy var pickerData = [self.slotItems, self.slotItems, self.slotItems]
     lazy var maxPickerRow = self.pickerData[0].count
     
     // Outlets
     @IBOutlet weak var slotPickerView: UIPickerView!
+    @IBOutlet weak var spitButton: UIButton!
     
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPickerView()
+    }
+    
+    // Actions
+    @IBAction func spitButtonTapped(_ sender: Any) {
+        let currentIndex = slotPickerView.selectedRow(inComponent: 1)
+        slotPickerView.selectRow(currentIndex + 1, inComponent: 1, animated: true)
     }
     
     // Delegate methods
